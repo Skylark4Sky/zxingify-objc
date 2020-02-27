@@ -379,7 +379,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 - (void)decodeImage: (CGImageRef)image {
-    //先进行翻转后在裁剪，提高选中区域精度
+    //先进行翻转后在裁剪，提高选中区域精度111
   CGImageRef rotatedImage = [self createRotatedImage:image degrees:self.rotation];
   CGImageRelease(image);
   image = rotatedImage;

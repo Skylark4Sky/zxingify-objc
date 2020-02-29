@@ -71,4 +71,6 @@
  */
 - (void)enableHeuristic;
 
++ (NSInteger)ZbarResultValueToZxing:(NSInteger)format;
+
 @end

@@ -448,9 +448,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                 [self.delegate captureResult:self result:result];
             });
         } else {
+            CGImageRef rotaImage = CGImageCreateCopy(self.lastScannedImage);
             dispatch_async(dispatch_get_main_queue(), ^{
                 ZBarReaderController *read = [ZBarReaderController new];
-                CGImageRef cgImageRef = rotatedImage;
+                CGImageRef cgImageRef = rotaImage;
                 ZBarSymbol* symbol = nil;
                 ZXResult *result = nil;
                 for(symbol in [read scanImage:cgImageRef]){
@@ -464,7 +465,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                 
                 symbol = nil;
                 read = nil;
-            });
+                CGImageRelease(cgImageRef);
+                cgImageRef = nil;
         }
     }
 }

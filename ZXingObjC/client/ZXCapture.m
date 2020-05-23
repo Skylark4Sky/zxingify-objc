@@ -466,7 +466,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                 symbol = nil;
                 read = nil;
                 CGImageRelease(cgImageRef);
-                cgImageRef = nil;});
+                cgImageRef = nil;
+            });
         }
     }
 }
